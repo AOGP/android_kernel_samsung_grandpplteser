@@ -28,7 +28,7 @@ script:
   - make O=out mrproper
   - export CROSS_COMPILE=~/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-
   - export ARCH_MTK_PLATFORM=mt6735
-  - export make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE  O=out mt6737t-grandpplte_defconfig
+  - export make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE  O=out mt6737t-grandpplte_defconfig
   - export KBUILD_BUILD_USER="fujitsu"
   - export KBUILD_BUILD_HOST="ALGPHELLO"
   - KERNEL_DIR=$PWD/android_kernel_samsung_grandpplteser
