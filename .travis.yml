@@ -28,9 +28,10 @@ script:
   - make O=out mrproper
   - export CROSS_COMPILE=~/arm-eabi-4.8/bin/arm-eabi-
   - export ARCH_MTK_PLATFORM=mt6735
-  - export make ARCH=arm O=out mt6737t-grandpplte_defconfig
+  - export ARCH=arm 
   - export KBUILD_BUILD_USER="fujitsu"
   - export KBUILD_BUILD_HOST="ALGPHELLO"
+  - make O=out mt6737t-grandpplte_defconfig
   - KERNEL_DIR=$PWD/android_kernel_samsung_grandpplteser
   - ZIMAGE=$KERNEL_DIR/arch/arm/boot/zImage
   - bash build.sh
