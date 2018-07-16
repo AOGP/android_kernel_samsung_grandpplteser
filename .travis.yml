@@ -16,7 +16,7 @@ addons:
 before_install:
 
   - sudo apt-get update -qq
-  - git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 ~/arm-linux-androideabi-4.9/
+  - git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8 ~/arm-linux-androideabi-4.8/
   - sudo chmod -R a+x *
 
 #######################################################################################
@@ -25,7 +25,7 @@ before_install:
 script:  
   
   
-  - export CROSS_COMPILE=~/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+  - export CROSS_COMPILE=~/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-
   - make ARCH=arm mt6737t-grandpplte_defconfig
   - make -j16
 
