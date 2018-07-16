@@ -40,7 +40,7 @@ deploy:
   on:
     tags: true
     repo: ALGPHELLO/android_kernel_samsung_grandpplteser
-    branch: master
+    branch: LineageOs-14.1
 
 branches:
   except:
