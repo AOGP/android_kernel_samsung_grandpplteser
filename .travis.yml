@@ -16,7 +16,7 @@ addons:
 before_install:
 
   - sudo apt-get update -qq
-  - git clone git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 ~/arm-eabi-4.8/
+  - git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 ~/arm-eabi-4.8/
   - sudo chmod -R a+x *
 
 #######################################################################################
