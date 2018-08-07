@@ -38,10 +38,7 @@ script:
   
   #- make CROSS_COMPILE=$CROSS_COMPILE O=out
   - make -j16
-
-after_success:
-  - curl --upload-file arch/arm/boot/zImage https://transfer.sh/samsung_g532f_MT6737T_kernel
-  
+ 
 deploy:
   skip_cleanup: true
   provider: releases
