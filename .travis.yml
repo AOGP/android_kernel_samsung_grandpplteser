@@ -1,0 +1,57 @@
+language: c
+#######################################################################################
+os:
+  - linux
+  
+sudo: enabled
+
+addons:
+  apt:
+    packages:
+      - curl
+
+#######################################################################################
+
+
+before_install:
+
+  - sudo apt-get update -qq
+  - git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 ~/arm-eabi-4.8/
+  - sudo chmod -R a+x *
+
+#######################################################################################
+
+
+script:  
+  - mkdir -p out
+  #- make O=out clean
+  - make O=out mrproper
+  - export CROSS_COMPILE=~/arm-eabi-4.8/bin/arm-eabi-
+  - export ARCH_MTK_PLATFORM=mt6735
+  - export ARCH=arm 
+  - export KBUILD_BUILD_USER="fujitsu"
+  - export KBUILD_BUILD_HOST="ALGPHELLO"
+  - make O=out mt6737t-grandpplte_defconfig
+  - KERNEL_DIR=$PWD/android_kernel_samsung_grandpplteser
+  - ZIMAGE=$KERNEL_DIR/arch/arm/boot/zImage
+  #- bash build.sh
+  
+  #- make CROSS_COMPILE=$CROSS_COMPILE O=out
+  - make O=out -j16
+
+after_success:
+  - curl --upload-file arch/arm/boot/zImage https://transfer.sh/samsung_g532f_MT6737T_kernel
+  
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key: "$GIT_OAUTH_TOKEN_TB"
+  
+  on:
+    tags: false
+    repo: ALGPHELLO/android_kernel_samsung_grandpplteser
+    branch: master
+
+branches:
+  except:
+    - /^(?i:untagged)-.*$/
